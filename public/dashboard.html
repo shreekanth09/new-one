@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    /* General styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #4A90E2;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Styling for the container */
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    /* User list styling */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 12px;
+      border-bottom: 1px solid #f0f0f0;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    .user-name {
+      font-weight: bold;
+    }
+
+    .user-username {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    /* Hover effect on list items */
+    li:hover {
+      background-color: #e8f7ff;
+      cursor: pointer;
+      transform: translateY(-2px);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    /* Loader styling */
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 50px 0;
+    }
+
+    .loader div {
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background-color: #4A90E2;
+      border-radius: 50%;
+      animation: bounce 0.6s infinite alternate;
+    }
+
+    .loader div:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .loader div:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+      to {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+  <script>
+    async function loadUsers() {
+      const loader = document.getElementById("loader");
+      const userList = document.getElementById("userList");
+
+      loader.style.display = 'flex';
+      userList.innerHTML = ''; // Clear previous list
+
+      try {
+        const response = await fetch("/api/users");
+        const users = await response.json();
+        loader.style.display = 'none';
+
+        userList.innerHTML = users
+          .map((u) => `
+            <li>
+              <span class="user-name">${u.name}</span>
+              <span class="user-username">(${u.username})</span>
+            </li>
+          `)
+          .join("");
+      } catch (error) {
+        loader.style.display = 'none';
+        userList.innerHTML = `<li>Error loading users. Please try again later.</li>`;
+      }
+    }
+  </script>
+</head>
+
+<body onload="loadUsers()">
+  <div class="container">
+    <h2>User Dashboard</h2>
+    <div id="loader" class="loader" style="display: none;">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul id="userList"></ul>
+  </div>
+</body>
+
+</html>
