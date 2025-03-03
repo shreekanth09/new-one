@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled List</title>
+    <style>
+        /* Custom list styling */
+        .schr {
+            list-style: none;
+            padding: 0;
+            margin: 20px;
+            max-width: 500px;
+            font-family: Arial, sans-serif;
+        }
+
+        .schr li {
+            padding: 12px 20px;
+            margin: 8px 0;
+            background-color: #f8f9fa;
+            /* border-left: 4px solid #4CAF50; */
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .schr li:hover {
+            background-color:red;
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .schr li::before {
+            content: "•";
+            /* color: #4CAF50; */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+
+        .list-container {
+            /* background-color: white; */
+            padding: 30px;
+            border-radius: 8px;
+            /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
+            margin: 50px auto;
+            max-width: 600px;
+            position: absolute;
+            left: 15px;
+            top: -10px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            /* border-bottom: 2px solid #4CAF50; */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        a{
+            text-decoration: none; 
+            color: black;
+        }
+        a:hover{
+            color: white; 
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="list-container">
+        <!-- <div> List of states</div> -->
+        <h2>Scholarship and Buspass</h2>
+        <ul class="schr">
+           <li> <a href="page4.html"> Scholarship </a></li>
+           <li> <a href="https://sevasindhu.karnataka.gov.in/Sevasindhu/English" >Buspass</a></li>
+
+        </ul>
+    </div>
+</body>

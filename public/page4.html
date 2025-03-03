@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled List</title>
+    <style>
+        /* Custom list styling */
+        .schr {
+            list-style: none;
+            padding: 0;
+            margin: 20px;
+            max-width: 500px;
+            font-family: Arial, sans-serif;
+        }
+
+        .schr li {
+            padding: 12px 20px;
+            margin: 8px 0;
+            background-color: #f8f9fa;
+            /* border-left: 4px solid #4CAF50; */
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            
+        }
+
+        .schr li:hover {
+            background-color:red;
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .schr li::before {
+            content: "•";
+            /* color: #4CAF50; */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+           
+           
+        }
+
+        .list-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+
+        h2 {
+            color: #2c3e50;        
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        a:hover{
+            color: white;
+           
+            
+        }
+        a{
+            display: inline-block;
+            text-decoration: none; 
+            color: black;
+        }
+            
+    </style>
+</head>
+<body>
+    <div class="list-container">
+        <h2>List of Schollerships</h2>
+        <ul class="schr">
+            
+            <li><a href="https://ssp.postmatric.karnataka.gov.in/"> SSP:State Schollerships Portel </a></li>
+            <li> <a href="https://scholarships.gov.in/">NSP:National Schollerships Portel</a> </li>
+            <li> <a href="https://klwbapps.karnataka.gov.in/maintenance.html"> Laber card </a></li>
+            <li> <a href="https://swdservices.karnataka.gov.in/swprizemoney/Home.aspx"> Post Matric scholarship Portal(SC and ST)</a> </li>
+            
+        </ul>
+    </div>
+</body>
+</html>

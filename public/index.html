@@ -102,12 +102,19 @@
                 width: 90%;
             }
         }
+        .reg{
+            text-transform: none;
+            /* background-color: #4A90E2; */
+            color: black;
+        }
     </style>
     <script>
         async function login(event) {
             event.preventDefault();
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
+            const regest = document.getElementById("reg").value;
+           
 
             const response = await fetch("/api/login", {
                 method: "POST",
@@ -118,23 +125,27 @@
             const data = await response.json();
             if (response.ok) {
                 sessionStorage.setItem("user", JSON.stringify(data.user));
-                window.location.href = "dashboard.html";
+                window.location.href = "page.html";
             } else {
                 alert(data.error);
             }
+            
         }
+        
+        
     </script>
 </head>
 
 <body>
     <div class="container">
         <h2>Login</h2>
+        <img src="ind.png">
         <form onsubmit="login(event)">
             <input type="text" id="username" placeholder="Username" required><br>
             <input type="password" id="password" placeholder="Password" required><br>
-            <button type="submit">Login</button>
-            <button type="button" class="register-btn">
-                <a href="register.html">Register</a>
+            <button type="submit" >Login</button>
+            <button type="button" id="reg">
+               <a href="register.html" >Register</a>
             </button>
         </form>
     </div>
